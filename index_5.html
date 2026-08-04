@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Task Instructions</title>
+<style>
+  :root{
+    --bg:#0a0c11;--panel:#12161f;--panel2:#1a1f2b;--line:#272e3c;
+    --text:#eef2f8;--muted:#9aa6bb;--red:#ff3b30;--red-deep:#c62029;
+    --green:#22c55e;--amber:#ff9d0b;--yellow:#ffcc00;--blue:#3b82f6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    background:radial-gradient(1100px 560px at 50% -10%, #16202f 0%, var(--bg) 60%);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;padding:16px;-webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+  .head{
+    text-align:center;font-size:20px;font-weight:900;letter-spacing:.3px;
+    margin:4px 0 16px;display:flex;align-items:center;justify-content:center;gap:8px;
+  }
+  .card{
+    background:var(--panel);border:1px solid var(--line);border-radius:16px;
+    padding:18px;margin-bottom:14px;box-shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  /* pills */
+  .pills{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:14px}
+  .pill{
+    font-weight:800;font-size:13px;padding:10px 16px;border-radius:999px;display:flex;align-items:center;gap:7px;
+  }
+  .pill.watch{background:linear-gradient(90deg,var(--red-deep),var(--red));color:#fff;
+    box-shadow:0 6px 20px rgba(255,59,48,.25);animation:pulse 1.8s infinite}
+  .pill.like{background:linear-gradient(90deg,#155ec9,#3b82f6);color:#fff}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.82}}
+  /* thumbnail */
+  .thumb-label{
+    display:inline-block;background:var(--amber);color:#161616;font-weight:800;
+    font-size:12px;letter-spacing:.4px;padding:6px 13px;border-radius:999px;margin-bottom:12px;text-transform:uppercase;
+  }
+  .thumb-frame{
+    position:relative;border-radius:14px;overflow:hidden;border:3px solid var(--amber);
+    background:#000;aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;
+  }
+  .thumb-frame img{width:100%;height:100%;object-fit:cover;display:block}
+  .thumb-ph{color:#8892a6;text-align:center;padding:24px;font-size:14px}
+  .chan{margin-top:12px;font-size:15px;color:var(--muted)}
+  .chan b{color:#fff}
+  /* steps / checklist */
+  .step{
+    display:flex;gap:12px;align-items:flex-start;background:var(--panel2);
+    border:1px solid var(--line);border-radius:12px;padding:13px 14px;margin-bottom:9px;
+  }
+  .step:last-child{margin-bottom:0}
+  .box{
+    flex:none;width:26px;height:26px;border-radius:7px;border:2px solid #3a4a63;
+    background:#0c1220;display:flex;align-items:center;justify-content:center;font-weight:900;color:#0c1220;font-size:15px;
+  }
+  .step.done .box{background:var(--green);border-color:var(--green);color:#06210f}
+  .step .txt{font-size:14px;padding-top:1px}
+  .step .txt b{color:#fff}
+  .num{color:var(--amber);font-weight:900;margin-right:4px}
+  .hl{color:var(--yellow);font-weight:800}
+  .hl-red{color:#ff6b63;font-weight:800}
+  /* frames highlight */
+  .frames{
+    text-align:center;background:linear-gradient(90deg,#122016,#0e1a12);
+    border:1px solid #1f7a3a;border-radius:14px;padding:14px;margin-top:12px;
+  }
+  .frames .num2{font-size:30px;font-weight:900;color:var(--green);line-height:1}
+  .frames small{color:var(--muted);font-size:12px;display:block;margin-top:4px}
+  /* ready banner */
+  #ready{
+    display:none;text-align:center;background:linear-gradient(90deg,#0f3d24,#127a3e);
+    border:1px solid var(--green);border-radius:14px;padding:14px;margin-top:12px;font-weight:800;color:#eafff2;
+    animation:pop .4s ease;
+  }
+  #ready.show{display:block}
+  @keyframes pop{0%{transform:scale(.96);opacity:0}100%{transform:scale(1);opacity:1}}
+  /* proof */
+  .proof li{margin-left:20px;margin-bottom:6px;font-size:14px}
+  /* warning */
+  .warn{
+    background:linear-gradient(180deg,#2a1113,#180c0e);border:2px solid var(--red);
+    border-radius:14px;padding:14px;text-align:center;font-weight:800;color:#ff8f88;font-size:14px;
+  }
+  h2{font-size:16px;margin:0 0 12px;display:flex;align-items:center;gap:8px}
+  .foot{text-align:center;color:var(--muted);font-size:12px;padding:10px 0}
+  .prog-wrap{height:8px;background:#0c1220;border-radius:999px;overflow:hidden;margin-bottom:14px;border:1px solid var(--line)}
+  .prog{height:100%;width:0;background:linear-gradient(90deg,#22c55e,#16a34a);transition:width .3s ease}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ⭐ EDIT HERE ANYTIME ⭐ -->
+  <script>
+    const CONFIG = {
+      channelName: "Offrly",        // YouTube channel name
+      watchTime:   "1:50",          // minimum watch time
+      framesTarget:"6,600",         // Viewport/Frames must be OVER this
+      thumbnailSrc:"thumb.jpg"      // image file in the same repo
+    };
+  </script>
+
+  <div class="head">🎬 Video Task Instructions</div>
+
+  <div class="pills">
+    <div class="pill watch">⏱ MUST WATCH <span id="pwatch">1:50</span> MIN</div>
+    <div class="pill like">👍 LIKE THE VIDEO</div>
+  </div>
+
+  <!-- THUMBNAIL -->
+  <div class="card" style="text-align:center">
+    <div class="thumb-label">▶ Click the video that looks like this</div>
+    <div class="thumb-frame">
+      <img id="thumbImg" alt="Video thumbnail" style="display:none">
+      <div id="thumbPh" class="thumb-ph">📺 <b>Thumbnail goes here</b></div>
+    </div>
+  </div>
+
+  <!-- INSTRUCTIONS -->
+  <div class="card">
+    <h2>📋 Do these in order</h2>
+
+    <div class="step">
+      <div class="box" style="background:var(--amber);border-color:var(--amber);color:#161616">1</div>
+      <div class="txt">Open the <b>link provided in the task</b> and click the video that looks <b>exactly</b> like the thumbnail above.</div>
+    </div>
+
+    <div class="step">
+      <div class="box" style="background:var(--amber);border-color:var(--amber);color:#161616">2</div>
+      <div class="txt">Before pressing play, <b>right-click the video</b> and turn on <span class="hl">"Stats for Nerds"</span>.</div>
+    </div>
+
+    <div class="step">
+      <div class="box" style="background:var(--amber);border-color:var(--amber);color:#161616">3</div>
+      <div class="txt">Watch continuously for at least <span class="hl" id="twatch">1:50</span> min — <span class="hl-red">no skipping, no speed change</span>. Your <b>Viewport / Frames</b> must go <b>over <span id="tframes">6,600</span></b>.</div>
+    </div>
+
+    <div class="step">
+      <div class="box" style="background:var(--amber);border-color:var(--amber);color:#161616">4</div>
+      <div class="txt">👍 <b>Like the video.</b></div>
+    </div>
+
+    <div class="frames">
+      <div class="num2" id="framesBig">6,600+</div>
+      <small>your Viewport / Frames must be OVER this number</small>
+    </div>
+  </div>
+
+  <!-- PROOF -->
+  <div class="card">
+    <h2>📸 Screenshots to upload</h2>
+    <ol class="proof">
+      <li>Video playing with <b>Stats for Nerds ON</b> (Viewport/Frames visible &amp; over the target).</li>
+      <li>The <b>watch time</b> reached at least <span class="hl" id="pwatch2">1:50</span> minutes.</li>
+      <li>The video showing your <b>👍 Like</b> is active.</li>
+    </ol>
+  </div>
+
+  <!-- WARNING -->
+  <div class="card warn">⚠️ If you watch less than <span id="wwatch">1:50</span> minutes, you will <u>NOT be paid</u>.</div>
+
+  <div class="foot">Follow every step correctly → get approved &amp; paid ✅</div>
+
+</div>
+
+<script>
+  (function(){
+    var c = CONFIG;
+    ['pwatch','twatch','pwatch2','wwatch'].forEach(function(id){ document.getElementById(id).textContent = c.watchTime; });
+    document.getElementById('tframes').textContent = c.framesTarget;
+    document.getElementById('framesBig').textContent = c.framesTarget + '+';
+    if (c.thumbnailSrc && c.thumbnailSrc.trim() !== "") {
+      var img = document.getElementById('thumbImg');
+      img.src = c.thumbnailSrc + (c.thumbnailSrc.indexOf('data:')===0 ? '' : ('?v=' + Date.now()));
+      img.style.display = 'block';
+      document.getElementById('thumbPh').style.display = 'none';
+    }
+  })();
+</script>
+</body>
+</html>
