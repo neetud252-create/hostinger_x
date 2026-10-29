@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Video Task Instructions</title>
+<title>Pocket Option AI Trading Bot</title>
+<meta name="description" content="Watch the full 4-minute Pocket Option AI Trading Bot video and like it. Follow the steps and submit screenshots showing completion.">
 <style>
   :root{
     --bg:#0a0c11;--panel:#12161f;--panel2:#1a1f2b;--line:#272e3c;
@@ -64,7 +65,7 @@
   .num{color:var(--amber);font-weight:900;margin-right:4px}
   .hl{color:var(--yellow);font-weight:800}
   .hl-red{color:#ff6b63;font-weight:800}
-  /* frames highlight */
+  /* watch-time highlight */
   .frames{
     text-align:center;background:linear-gradient(90deg,#122016,#0e1a12);
     border:1px solid #1f7a3a;border-radius:14px;padding:14px;margin-top:12px;
@@ -99,17 +100,16 @@
   <script>
     const CONFIG = {
       channelName: "Offrly",        // YouTube channel name
-      watchTime:   "1:50",          // minimum watch time
-      framesTarget:"6,600",         // Viewport/Frames must be OVER this
+      watchTime:   "4:00",          // full video watch time
       thumbnailSrc:"thumb.jpg"      // image file in the same repo
     };
   </script>
 
-  <div class="head">🎬 Video Task Instructions</div>
+  <h1 class="head">Pocket Option AI Trading Bot</h1>
 
   <div class="pills">
-    <div class="pill watch">⏱ MUST WATCH <span id="pwatch">1:50</span> MIN</div>
-    <div class="pill like">👍 LIKE THE VIDEO</div>
+    <div class="pill watch">⏱ WATCH FULL VIDEO: <span id="pwatch">4:00</span></div>
+    <div class="pill like">👍 LIKE REQUIRED</div>
   </div>
 
   <!-- THUMBNAIL -->
@@ -127,27 +127,27 @@
 
     <div class="step">
       <div class="box" style="background:var(--amber);border-color:var(--amber);color:#161616">1</div>
-      <div class="txt">Open the <b>link provided in the task</b> and click the video that looks <b>exactly</b> like the thumbnail above.</div>
+      <div class="txt">Open the <b>link provided in the task</b> and find <b>Pocket Option AI Trading Bot</b>. Match the video to the thumbnail above.</div>
     </div>
 
     <div class="step">
       <div class="box" style="background:var(--amber);border-color:var(--amber);color:#161616">2</div>
-      <div class="txt">Before pressing play, <b>right-click the video</b> and turn on <span class="hl">"Stats for Nerds"</span>.</div>
+      <div class="txt">Play the video at <b>normal speed (1×)</b> and keep the playback timer visible.</div>
     </div>
 
     <div class="step">
       <div class="box" style="background:var(--amber);border-color:var(--amber);color:#161616">3</div>
-      <div class="txt">Watch continuously for at least <span class="hl" id="twatch">1:50</span> min — <span class="hl-red">no skipping, no speed change</span>. Your <b>Viewport / Frames</b> must go <b>over <span id="tframes">6,600</span></b>.</div>
+      <div class="txt">Watch the <b>full 4-minute video</b> from start to finish. Reach <span class="hl" id="twatch">4:00</span> on the playback timer — <span class="hl-red">no skipping, no speed change</span>.</div>
     </div>
 
     <div class="step">
       <div class="box" style="background:var(--amber);border-color:var(--amber);color:#161616">4</div>
-      <div class="txt">👍 <b>Like the video.</b></div>
+      <div class="txt">👍 <b>Like the video — this is required.</b> Make sure the Like button is active before taking your screenshot.</div>
     </div>
 
     <div class="frames">
-      <div class="num2" id="framesBig">6,600+</div>
-      <small>your Viewport / Frames must be OVER this number</small>
+      <div class="num2" id="watchBig">4:00</div>
+      <small>Watch the full 4-minute video + like it. Both steps are required.</small>
     </div>
   </div>
 
@@ -155,14 +155,13 @@
   <div class="card">
     <h2>📸 Screenshots to upload</h2>
     <ol class="proof">
-      <li>Video playing with <b>Stats for Nerds ON</b> (Viewport/Frames visible &amp; over the target).</li>
-      <li>The <b>watch time</b> reached at least <span class="hl" id="pwatch2">1:50</span> minutes.</li>
-      <li>The video showing your <b>👍 Like</b> is active.</li>
+      <li>The <b>Pocket Option AI Trading Bot</b> video showing the playback timer at <span class="hl" id="pwatch2">4:00</span> after watching from start to finish.</li>
+      <li>The same video showing your <b>👍 Like</b> is active.</li>
     </ol>
   </div>
 
   <!-- WARNING -->
-  <div class="card warn">⚠️ If you watch less than <span id="wwatch">1:50</span> minutes, you will <u>NOT be paid</u>.</div>
+  <div class="card warn">⚠️ Watching the full <span id="wwatch">4:00</span> video and liking it are <b>both required</b>. If either step is missing, you will <u>NOT be paid</u>.</div>
 
   <div class="foot">Follow every step correctly → get approved &amp; paid ✅</div>
 
@@ -171,9 +170,7 @@
 <script>
   (function(){
     var c = CONFIG;
-    ['pwatch','twatch','pwatch2','wwatch'].forEach(function(id){ document.getElementById(id).textContent = c.watchTime; });
-    document.getElementById('tframes').textContent = c.framesTarget;
-    document.getElementById('framesBig').textContent = c.framesTarget + '+';
+    ['pwatch','twatch','pwatch2','wwatch','watchBig'].forEach(function(id){ document.getElementById(id).textContent = c.watchTime; });
     if (c.thumbnailSrc && c.thumbnailSrc.trim() !== "") {
       var img = document.getElementById('thumbImg');
       img.src = c.thumbnailSrc + (c.thumbnailSrc.indexOf('data:')===0 ? '' : ('?v=' + Date.now()));
