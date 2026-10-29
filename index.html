@@ -99,7 +99,7 @@
   <!-- ⭐ EDIT HERE ANYTIME ⭐ -->
   <script>
     const CONFIG = {
-      channelName: "Offrly",        // YouTube channel name
+      channelName: "Mr. Voss",        // YouTube channel name
       watchTime:   "4:00",          // full video watch time
       thumbnailSrc:"thumb.jpg"      // image file in the same repo
     };
@@ -112,6 +112,8 @@
     <div class="pill like">👍 LIKE REQUIRED</div>
   </div>
 
+  <div class="card warn" role="note" aria-label="Required YouTube search filter">⚠️ BEFORE SELECTING THE VIDEO: Set <b>Filters → Upload date → Today</b> on YouTube. Choose the video from <b id="filterChannel">Mr. Voss</b>.</div>
+
   <!-- THUMBNAIL -->
   <div class="card" style="text-align:center">
     <div class="thumb-label">▶ Click the video that looks like this</div>
@@ -119,6 +121,7 @@
       <img id="thumbImg" alt="Video thumbnail" style="display:none">
       <div id="thumbPh" class="thumb-ph">📺 <b>Thumbnail goes here</b></div>
     </div>
+    <div class="chan">YouTube channel: <b id="channelName">Mr. Voss</b></div>
   </div>
 
   <!-- INSTRUCTIONS -->
@@ -127,7 +130,7 @@
 
     <div class="step">
       <div class="box" style="background:var(--amber);border-color:var(--amber);color:#161616">1</div>
-      <div class="txt">Open the <b>link provided in the task</b> and find <b>Pocket Option AI Trading Bot</b>. Match the video to the thumbnail above.</div>
+      <div class="txt">Open the <b>link provided in the task</b>. Set <span class="hl">Filters → Upload date → Today</span>, then find <b>Pocket Option AI Trading Bot</b> by <b id="stepChannel">Mr. Voss</b>. Match the video to the thumbnail above.</div>
     </div>
 
     <div class="step">
@@ -170,6 +173,7 @@
 <script>
   (function(){
     var c = CONFIG;
+    ['channelName','filterChannel','stepChannel'].forEach(function(id){ document.getElementById(id).textContent = c.channelName; });
     ['pwatch','twatch','pwatch2','wwatch','watchBig'].forEach(function(id){ document.getElementById(id).textContent = c.watchTime; });
     if (c.thumbnailSrc && c.thumbnailSrc.trim() !== "") {
       var img = document.getElementById('thumbImg');
