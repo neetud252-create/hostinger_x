@@ -63,6 +63,8 @@
     place-items: center;
     color: var(--muted);
   }
+  /* placeholder and photo share the same grid cell */
+  .image-box > * { grid-area: 1 / 1; }
   .image-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .meta { color: var(--muted); font-size: 14px; margin: 14px 0 0; }
   .meta strong { color: #fff; }
@@ -138,8 +140,10 @@
         </div>
       </div>
       <div class="image-box">
-        <!-- Replace with your own image: <img src="your-image.jpg" alt="Description"> -->
+        <!-- Drop a file named thumb.png next to index.html and it appears here.
+             .jpg / .jpeg / .webp also work. No code edit needed. -->
         <span>Paste the Deal Drops thumbnail here</span>
+        <img id="thumb" alt="Deal Drops video thumbnail">
       </div>
       <p class="meta">Source: <strong>Deal Drops</strong></p>
     </section>
@@ -159,5 +163,21 @@
     </section>
 
   </div>
+
+<script>
+  // Tries thumb.png first, then common alternates. If none exist, the
+  // placeholder text stays visible and no broken-image icon shows.
+  (function () {
+    var img = document.getElementById('thumb');
+    var names = ['thumb.png', 'thumb.jpg', 'thumb.jpeg', 'thumb.webp', 'thumb.PNG', 'thumb.JPG'];
+    var i = 0;
+    function next() {
+      if (i >= names.length) { img.remove(); return; }
+      img.src = names[i++];
+    }
+    img.addEventListener('error', next);
+    next();
+  })();
+</script>
 </body>
 </html>
